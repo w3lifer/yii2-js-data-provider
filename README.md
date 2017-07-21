@@ -29,5 +29,5 @@ Yii2JsDataProvider::widget([
 The code above registers the following JavaScript in the `<head>` section:
 
 ``` html
-<script type="text/javascript">var JS_DATA_PROVIDER = {"a":1,"b":2};</script>
+<script type="text/javascript">var YII2_JS_DATA_PROVIDER = {"a":1,"b":2};</script>
 ```

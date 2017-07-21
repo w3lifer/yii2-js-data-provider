@@ -11,7 +11,7 @@ class Yii2JsDataProvider extends Widget
     /**
      * @var string JS variable name.
      */
-    public $varName = 'JS_DATA_PROVIDER';
+    public $varName = 'YII2_JS_DATA_PROVIDER';
 
     /**
      * @var array Data for transmission. It will be JSON encoded.
