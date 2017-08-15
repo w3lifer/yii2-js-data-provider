@@ -2,27 +2,44 @@
 
 namespace w3lifer\yii2JsDataProvider;
 
+use yii\base\InvalidConfigException;
 use yii\base\Widget;
 use yii\helpers\Json;
 use yii\web\View;
 
+/**
+ * Yii2 JS data provider.
+ */
 class Yii2JsDataProvider extends Widget
 {
     /**
-     * @var string JS variable name.
+     * @var string
      */
-    public $varName = 'YII2_JS_DATA_PROVIDER';
+    private $varPrefix = 'Y2JSDP_';
 
     /**
-     * @var array Data for transmission. It will be JSON encoded.
+     * @var string
+     */
+    public $varPostfix = '';
+
+    /**
+     * @var array Data for transmission. They will be JSON encoded.
      */
     public $data = [];
 
     /**
-     * @var int Script position.
-     * @see View::registerJs()
+     * @inheritdoc
      */
-    public $scriptPosition = View::POS_HEAD;
+    public function init()
+    {
+        parent::init();
+        if (!$this->varPostfix) {
+            throw new InvalidConfigException(
+                'Missing required value for ' .
+                    self::className() . '::$varPostfix property.'
+            );
+        }
+    }
 
     /**
      * @inheritdoc
@@ -30,8 +47,8 @@ class Yii2JsDataProvider extends Widget
     public function run()
     {
         $js =
-            'var ' . $this->varName . ' = ' .
+            'var ' . $this->varPrefix . $this->varPostfix . ' = ' .
                 Json::htmlEncode($this->data) . ';';
-        $this->view->registerJs($js, $this->scriptPosition);
+        $this->view->registerJs($js, View::POS_HEAD);
     }
 }
