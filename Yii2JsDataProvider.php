@@ -23,7 +23,12 @@ class Yii2JsDataProvider extends Widget
     public $varPostfix = '';
 
     /**
-     * @var array Data for transmission. They will be JSON encoded.
+     * @var array
+     */
+    private static $registeredVarPostfixes = [];
+
+    /**
+     * @var array Data for transmission (will be JSON encoded).
      */
     public $data = [];
 
@@ -39,6 +44,12 @@ class Yii2JsDataProvider extends Widget
                     self::className() . '::$varPostfix property.'
             );
         }
+        if (in_array($this->varPostfix, self::$registeredVarPostfixes)) {
+            throw new InvalidConfigException(
+                $this->varPostfix . ' postfix is already registered.'
+            );
+        }
+        self::$registeredVarPostfixes[] = $this->varPostfix;
     }
 
     /**
