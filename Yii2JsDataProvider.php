@@ -46,7 +46,9 @@ class Yii2JsDataProvider extends Widget
         }
         if (in_array($this->varPostfix, self::$registeredVarPostfixes)) {
             throw new InvalidConfigException(
-                $this->varPostfix . ' postfix is already registered.'
+                'The specified ' .
+                    self::className() . '::$varPostfix ' .
+                        'is already registered.'
             );
         }
         self::$registeredVarPostfixes[] = $this->varPostfix;
