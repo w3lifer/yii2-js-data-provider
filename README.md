@@ -18,8 +18,6 @@ composer require w3lifer/yii2-js-data-provider
 
 use w3lifer\yii2\JsDataProvider;
 
-use w3lifer\yii2\JsDataProvider;
-
 JsDataProvider::widget([
     'varPostfix' => 'AB',
     'data' => [
