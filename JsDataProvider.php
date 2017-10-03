@@ -1,6 +1,6 @@
 <?php
 
-namespace w3lifer\yii2JsDataProvider;
+namespace w3lifer\yii2;
 
 use yii\base\InvalidConfigException;
 use yii\base\Widget;
@@ -8,19 +8,19 @@ use yii\helpers\Json;
 use yii\web\View;
 
 /**
- * Yii2 JS data provider.
+ * JS data provider.
  */
-class Yii2JsDataProvider extends Widget
+class JsDataProvider extends Widget
 {
     /**
      * @var string
      */
-    private $varPrefix = 'Y2JSDP_';
+    protected $varPrefix = 'JSDP_';
 
     /**
      * @var string
      */
-    public $varPostfix = '';
+    public $varPostfix;
 
     /**
      * @var array
@@ -61,7 +61,7 @@ class Yii2JsDataProvider extends Widget
     {
         $js =
             'var ' . $this->varPrefix . $this->varPostfix . ' = ' .
-                Json::htmlEncode($this->data) . ';';
+                Json::htmlEncode((object) $this->data) . ';';
         $this->view->registerJs($js, View::POS_HEAD);
     }
 }

@@ -1,9 +1,17 @@
-# Yii2JsDataProvider Change Log
+# Change Log
 
+- [5.0.0 October 3, 2017](#500-october-3-2017)
 - [4.0.0 August 17, 2017](#400-august-17-2017)
 - [3.0.0 August 16, 2017](#300-august-16-2017)
 - [2.0.0 July 22, 2017](#200-july-22-2017)
 - [1.0.0 July 18, 2017](#100-july-18-2017)
+
+## 5.0.0 October 3, 2017
+
+- `w3lifer\yii2JsDataProvider\Yii2JsDataProvider` -> `w3lifer\yii2\JsDataProvider`
+- `private $varPrefix = 'Y2JSDP_';` -> `protected $varPrefix = 'JSDP_';`
+- `public $varPostfix = '';` -> `public $varPostfix;`
+- `Json::htmlEncode($this->data)` -> `Json::htmlEncode((object) $this->data)`
 
 ## 4.0.0 August 17, 2017
 
