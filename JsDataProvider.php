@@ -15,17 +15,12 @@ class JsDataProvider extends Widget
     /**
      * @var string
      */
-    protected $varPrefix = 'JSDP_';
-
-    /**
-     * @var string
-     */
-    public $varPostfix;
+    public $var;
 
     /**
      * @var array
      */
-    private static $registeredVarPostfixes = [];
+    private static $registeredVars = [];
 
     /**
      * @var array Data for transmission (will be JSON encoded).
@@ -38,20 +33,18 @@ class JsDataProvider extends Widget
     public function init()
     {
         parent::init();
-        if (!$this->varPostfix) {
+        if (!$this->var) {
             throw new InvalidConfigException(
                 'Missing required value for ' .
-                    self::className() . '::$varPostfix property.'
+                    self::className() . '::$var property.'
             );
         }
-        if (in_array($this->varPostfix, self::$registeredVarPostfixes)) {
+        if (in_array($this->var, self::$registeredVars)) {
             throw new InvalidConfigException(
-                'The specified ' .
-                    self::className() . '::$varPostfix ' .
-                        'is already registered.'
+                'The specified variable is already registered.'
             );
         }
-        self::$registeredVarPostfixes[] = $this->varPostfix;
+        self::$registeredVars[] = $this->var;
     }
 
     /**
@@ -60,7 +53,7 @@ class JsDataProvider extends Widget
     public function run()
     {
         $js =
-            'var ' . $this->varPrefix . $this->varPostfix . ' = ' .
+            'var ' . $this->var . ' = ' .
                 Json::htmlEncode((object) $this->data) . ';';
         $this->view->registerJs($js, View::POS_HEAD);
     }

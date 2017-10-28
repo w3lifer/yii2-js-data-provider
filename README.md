@@ -13,13 +13,13 @@ composer require w3lifer/yii2-js-data-provider
 
 ``` php
 /**
- * @var $this yii\web\View
+ * @var $this \yii\web\View
  */
 
 use w3lifer\yii2\JsDataProvider;
 
 JsDataProvider::widget([
-    'varPostfix' => 'AB',
+    'var' => 'AB',
     'data' => [
         'a' => 1,
         'b' => 2,
@@ -27,7 +27,7 @@ JsDataProvider::widget([
 ]);
 
 JsDataProvider::widget([
-    'varPostfix' => 'CD',
+    'var' => 'CD',
     'data' => [
         'c' => 4,
         'd' => 5,
@@ -39,7 +39,7 @@ The code above registers the following JavaScript in the `<head>` section:
 
 ``` html
 <script type="text/javascript">
-  var JSDP_AB = {"a":1,"b":2};
-  var JSDP_CD = {"c":4,"d":5};
+  var AB = {"a":1,"b":2};
+  var CD = {"c":4,"d":5};
 </script>
 ```
