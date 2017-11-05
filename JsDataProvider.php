@@ -23,9 +23,9 @@ class JsDataProvider extends Widget
     private static $registeredVars = [];
 
     /**
-     * @var array Data for transmission (will be JSON encoded).
+     * @var mixed Data for transmission (will be JSON encoded).
      */
-    public $data = [];
+    public $data;
 
     /**
      * @inheritdoc
@@ -52,9 +52,11 @@ class JsDataProvider extends Widget
      */
     public function run()
     {
-        $js =
-            'var ' . $this->var . ' = ' .
-                Json::htmlEncode((object) $this->data) . ';';
+        $data =
+            !is_array($this->data)
+                ? $this->data
+                : (object) $this->data;
+        $js = 'var ' . $this->var . ' = ' . Json::htmlEncode($data) . ';';
         $this->view->registerJs($js, View::POS_HEAD);
     }
 }

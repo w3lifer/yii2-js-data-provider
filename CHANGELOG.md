@@ -1,11 +1,16 @@
 # Change Log
 
+- [6.1.0 November 5, 2017](#610-november-5-2017)
 - [6.0.0 October 28, 2017](#600-october-28-2017)
 - [5.0.0 October 3, 2017](#500-october-3-2017)
 - [4.0.0 August 17, 2017](#400-august-17-2017)
 - [3.0.0 August 16, 2017](#300-august-16-2017)
 - [2.0.0 July 22, 2017](#200-july-22-2017)
 - [1.0.0 July 18, 2017](#100-july-18-2017)
+
+## 6.1.0 November 5, 2017
+
+- Added the ability to register scalar variables
 
 ## 6.0.0 October 28, 2017
 
