@@ -38,6 +38,6 @@
 
 - `JS_DATA_PROVIDER` renamed to `YII2_JS_DATA_PROVIDER`
 
-## 1.0.0 July 16, 2017
+## 1.0.0 July 18, 2017
 
 - Initial release
